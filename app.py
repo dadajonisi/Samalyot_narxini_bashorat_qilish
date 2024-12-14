@@ -34,6 +34,7 @@ model_encoded = encoders["Model"].index(model_input)
 brendi_encoded = encoders["Samolyot brendi"].index(brendi)
 
 # Ma'lumotni birlashtirish
+# Ustun nomlarini modelning original nomlari bilan moslashtiring
 input_data = pd.DataFrame({
     "Model": [model_encoded],
     "O‘rindiqlar soni": [o_rindiqlar],
@@ -44,6 +45,10 @@ input_data = pd.DataFrame({
     "Texnik xizmat ko‘rsatish xarajatlari": [texnik_xizmat],
     "Valyuta kursi": [valyuta_kursi]
 })
+
+# Agar modelda ustun nomlari boshqacha bo'lsa, ularni modelga mos ravishda qayta nomlang
+input_data = input_data[["Model", "O‘rindiqlar soni", "Parvoz masofasi (km)", "Yonilg‘i sarfi (litr/soat)", 
+                         "Ishlab chiqarilgan yil", "Samolyot brendi", "Texnik xizmat ko‘rsatish xarajatlari", "Valyuta kursi"]]
 
 # Bashorat qilish
 if st.button("Narxni bashorat qilish"):
