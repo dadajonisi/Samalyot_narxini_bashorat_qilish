@@ -21,7 +21,6 @@ st.title("Samolyot narxini bashorat qilish")
 
 # Foydalanuvchi kiritishlari
 model_input = st.selectbox("Modelni tanlang", encoders["Model"])
-turi_input = st.selectbox("Samolyot turi", encoders["Turi"])
 o_rindiqlar = st.slider("O‘rindiqlar soni", min_value=4, max_value=400, step=1)
 parvoz_masofasi = st.slider("Parvoz masofasi (km)", min_value=500, max_value=15000, step=100)
 yonilgi_sarfi = st.number_input("Yonilg‘i sarfi (litr/soat)", min_value=50.0, max_value=5000.0, step=50.0)
@@ -32,13 +31,11 @@ valyuta_kursi = st.number_input("Valyuta kursi", min_value=1.0, max_value=1.2, s
 
 # Label kodlash
 model_encoded = encoders["Model"].index(model_input)
-turi_encoded = encoders["Turi"].index(turi_input)
 brendi_encoded = encoders["Samolyot brendi"].index(brendi)
 
 # Ma'lumotni birlashtirish
 input_data = pd.DataFrame({
     "Model": [model_encoded],
-    "Turi": [turi_encoded],
     "O‘rindiqlar soni": [o_rindiqlar],
     "Parvoz masofasi (km)": [parvoz_masofasi],
     "Yonilg‘i sarfi (litr/soat)": [yonilgi_sarfi],
